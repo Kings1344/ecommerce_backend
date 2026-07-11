@@ -7,7 +7,7 @@ urlpatterns = [
     # Custom Register (your own view)
     path('register/', RegisterView.as_view(), name='register'),
 
-    # JWT Login (using SimpleJWT - recommended)
+    # JWT Login (using SimpleJWT )
     path('login/', TokenObtainPairView.as_view(), name='login'),
 
     # Token Refresh

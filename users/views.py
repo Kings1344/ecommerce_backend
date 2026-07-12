@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class RegisterView(APIView):
+    permission_classes = [AllowAny]  # ← This is the key fix
+
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -15,6 +17,7 @@ class RegisterView(APIView):
                 "message": "User registered successfully",
                 "user_id": user.id
             }, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class ProfileView(APIView):
         permission_classes = [AllowAny]
